@@ -6,9 +6,14 @@ import "./App.css";
 const COUNTERS_QUERY = gql`
   query GetCounters {
     counters {
-      name
-      categoryEn
-      categoryKr
+      data {
+        label
+        items {
+          data {
+            nameKr
+          }
+        }
+      }
     }
   }
 `;

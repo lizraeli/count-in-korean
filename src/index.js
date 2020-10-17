@@ -6,7 +6,10 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
-  uri: "/.netlify/functions/graphql",
+  uri: "https://graphql.fauna.com/graphql",
+  headers: {
+    authorization: `Bearer ${process.env.REACT_APP_FAUNADB_SECRET}`,
+  },
   cache: new InMemoryCache(),
 });
 
