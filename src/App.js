@@ -1,8 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useQuery, gql } from "@apollo/client";
+import logo from "./logo.svg";
+import "./App.css";
+
+const COUNTERS_QUERY = gql`
+  query GetCounters {
+    counters {
+      name
+      categoryEn
+      categoryKr
+    }
+  }
+`;
 
 function App() {
+  const { loading, error, data } = useQuery(COUNTERS_QUERY);
+  console.log("loading: ", loading);
+  console.log("data: ", data);
+  console.log("errors: ", error);
   return (
     <div className="App">
       <header className="App-header">

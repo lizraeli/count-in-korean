@@ -1,22 +1,34 @@
 const { ApolloServer, gql } = require("apollo-server-lambda");
 
 const typeDefs = gql`
+  type Counter {
+    name: String
+    categoryEn: String
+    categoryKr: String
+  }
+
   type Query {
-    hello: String
+    counters: [Counter]
   }
 `;
 
 const resolvers = {
   Query: {
-    hello: (parent, args, context) => {
-      return "Hello, world!";
-    }
-  }
+    counters: (parent, args, context) => {
+      return [
+        {
+          name: "마리",
+          categoryEn: "animals",
+          categoryKr: "동물",
+        },
+      ];
+    },
+  },
 };
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
 });
 
 exports.handler = server.createHandler();
