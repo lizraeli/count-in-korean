@@ -4,21 +4,23 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.2.4",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^7.1.2",
     "apollo-server-lambda": "^2.18.2",
     "graphql": "^15.3.0",
     "graphql-request": "^3.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "typescript": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "gql:generate": "graphql-codegen --config codegen.js -r dotenv/config"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,5 +36,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.17.10",
+    "@graphql-codegen/introspection": "1.18.0",
+    "@graphql-codegen/typescript": "1.17.10",
+    "@graphql-codegen/typescript-operations": "1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "2.0.7",
+    "@types/jest": "^26.0.14"
   }
 }

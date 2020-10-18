@@ -4,6 +4,8 @@ const client = new GraphQLClient("https://graphql.fauna.com/graphql", {
   headers: { authorization: `Bearer ${process.env.REACT_APP_FAUNADB_SECRET}` },
 });
 
+// apollo-codegen introspect-schema http://localhost:8080/graphql --output schema.json
+
 exports.handler = async (event, context, callback) => {
   try {
     /* parse the string body into a JS object */

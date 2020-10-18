@@ -27,3 +27,6 @@ yarn-error.log*
 
 # graphql schema
 /graphql
+
+# environment variables
+.env
