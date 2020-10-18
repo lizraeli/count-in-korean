@@ -5,17 +5,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const client = new ApolloClient({
-  uri: "https://graphql.fauna.com/graphql",
-  headers: {
-    authorization: `Bearer ${process.env.REACT_APP_FAUNADB_SECRET}`,
-  },
+const proxyClient = new ApolloClient({
+  uri: "/.netlify/functions/graphql",
   cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={proxyClient}>
       <App />
     </ApolloProvider>
   </React.StrictMode>,
