@@ -222,6 +222,23 @@ export type QueryCountersByCategoryEnArgs = {
 };
 
 
+export type FindItemByNameEnQueryVariables = Exact<{
+  nameEn: Scalars['String'];
+}>;
+
+
+export type FindItemByNameEnQuery = (
+  { __typename?: 'Query' }
+  & { findItemByNameEn?: Maybe<(
+    { __typename?: 'Item' }
+    & Pick<Item, 'nameEn' | 'nameKr'>
+    & { counter: (
+      { __typename?: 'Counter' }
+      & Pick<Counter, 'label' | 'categoryEn' | 'categoryKr'>
+    ) }
+  )> }
+);
+
 export type GetCountersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -258,6 +275,45 @@ export type GetItemsQuery = (
 );
 
 
+export const FindItemByNameEnDocument = gql`
+    query FindItemByNameEn($nameEn: String!) {
+  findItemByNameEn(nameEn: $nameEn) {
+    nameEn
+    nameKr
+    counter {
+      label
+      categoryEn
+      categoryKr
+    }
+  }
+}
+    `;
+
+/**
+ * __useFindItemByNameEnQuery__
+ *
+ * To run a query within a React component, call `useFindItemByNameEnQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFindItemByNameEnQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFindItemByNameEnQuery({
+ *   variables: {
+ *      nameEn: // value for 'nameEn'
+ *   },
+ * });
+ */
+export function useFindItemByNameEnQuery(baseOptions?: Apollo.QueryHookOptions<FindItemByNameEnQuery, FindItemByNameEnQueryVariables>) {
+        return Apollo.useQuery<FindItemByNameEnQuery, FindItemByNameEnQueryVariables>(FindItemByNameEnDocument, baseOptions);
+      }
+export function useFindItemByNameEnLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FindItemByNameEnQuery, FindItemByNameEnQueryVariables>) {
+          return Apollo.useLazyQuery<FindItemByNameEnQuery, FindItemByNameEnQueryVariables>(FindItemByNameEnDocument, baseOptions);
+        }
+export type FindItemByNameEnQueryHookResult = ReturnType<typeof useFindItemByNameEnQuery>;
+export type FindItemByNameEnLazyQueryHookResult = ReturnType<typeof useFindItemByNameEnLazyQuery>;
+export type FindItemByNameEnQueryResult = Apollo.QueryResult<FindItemByNameEnQuery, FindItemByNameEnQueryVariables>;
 export const GetCountersDocument = gql`
     query GetCounters {
   counters {

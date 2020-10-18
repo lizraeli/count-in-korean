@@ -1,0 +1,11 @@
+query FindItemByNameEn($nameEn: String!) {
+  findItemByNameEn(nameEn: $nameEn) {
+    nameEn
+    nameKr
+    counter {
+      label
+      categoryEn
+      categoryKr
+    }
+  }
+}
