@@ -10,7 +10,7 @@ exports.handler = async (event, context, callback) => {
   try {
     /* parse the string body into a JS object */
     const body = JSON.parse(event.body);
-    const response = await client.request(body.query);
+    const response = await client.request(body.query, body.variables);
     const responseBody = JSON.stringify({ data: response })
     return callback(null, {
       statusCode: 200,
