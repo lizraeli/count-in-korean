@@ -47,6 +47,6 @@ function renderWithApollo(Comp) {
 
 test("renders learn react link", () => {
   const { getByText } = renderWithApollo(App);
-  const linkElement = getByText(/learn react/i);
+  const linkElement = getByText(/Count in Korean/i);
   expect(linkElement).toBeInTheDocument();
 });
