@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
+import Item from "./Item";
 import * as serviceWorker from "./serviceWorker";
 
 const proxyClient = new ApolloClient({
@@ -10,10 +12,25 @@ const proxyClient = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const Routes = () => {
+  return (
+    <Switch>
+        <Route path="/items/:itemNameEn">
+          <Item />
+        </Route>
+        <Route path={"/"} >
+          <App />
+        </Route>
+    </Switch>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={proxyClient}>
-      <App />
+      <Router>
+        <Routes />
+      </Router>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
